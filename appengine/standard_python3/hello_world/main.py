@@ -14,24 +14,33 @@
 
 # [START gae_python38_app]
 # [START gae_python3_app]
-from flask import Flask
+# from flask import Flask
+import speech_recognition as sr
 
+r=sr.Recognizer()
+print("Please Speak")
+with sr.Microphone as source;
+    audio_data=r.record(source, duration=5)
+    print("Recognizing.....")
+    text=r.recognize_google(audio_data)
+    print(text)
+  
 
 # If `entrypoint` is not defined in app.yaml, App Engine will look for an app
 # called `app` in `main.py`.
-app = Flask(__name__)
+# app = Flask(__name__)
 
 
-@app.route('/')
-def hello():
-    """Return a friendly HTTP greeting."""
-    return 'Hello World!'
+# @app.route('/')
+# def hello():
+#     """Return a friendly HTTP greeting."""
+#     return 'Hello World!'
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
     # can be configured by adding an `entrypoint` to app.yaml.
-    app.run(host='127.0.0.1', port=8080, debug=True)
+#     app.run(host='127.0.0.1', port=8080, debug=True)
 # [END gae_python3_app]
 # [END gae_python38_app]
